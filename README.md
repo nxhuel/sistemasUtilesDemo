@@ -1,3 +1,3 @@
 # sistemasUtilesDemo
 
-Technologies: Python, Django, Bootstrap, Sql Server
+> Technologies: Python, Django, Bootstrap, Sql Server
