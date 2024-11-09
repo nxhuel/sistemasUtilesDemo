@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.contrib.auth import login
 from django.http import HttpResponse
+from django.db import IntegrityError
 
 # Create your views here.
 
@@ -19,7 +21,14 @@ def singup(request):
                     password=request.POST['password1']
                 )
                 user.save()
-                return HttpResponse('Usuario creado satisfactoriamente')
-            except:
-                return HttpResponse('Usuario ya existe')
-        return HttpResponse('Contraseñas no coinciden')
+                login(request, user)
+                return redirect('tasks')
+            except IntegrityError:
+                return render(request, "signup.html", {
+                    'form': UserCreationForm,
+                    'error': 'Usuario ya existe'
+                })
+        return render(request, "signup.html", {
+            'form': UserCreationForm,
+            'error': 'Contraseñas no coinciden'
+        })
