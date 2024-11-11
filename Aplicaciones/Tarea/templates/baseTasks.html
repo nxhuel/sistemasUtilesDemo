@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{%block title%} {%endblock%}</title>
+    <title>{%block title%} Django Task {%endblock%}</title>
   </head>
   <body>
     <nav>
@@ -11,17 +11,23 @@
         <li>
           <a href="/home">Home</a>
         </li>
+
+        {% if user.is_authenticated %}
         <li>
           <a href="/tasks">Tasks</a>
         </li>
-
-        {% if user.is_authenticated %}
+        <li>
+          <a href="/tasks/create/">Create tasks</a>
+        </li>
         <li>
           <a href="/logout">Logout</a>
         </li>
         {% else %}
         <li>
           <a href="/signup">Signup</a>
+        </li>
+        <li>
+          <a href="/signin">Signin</a>
         </li>
         {% endif %}
       </ul>
