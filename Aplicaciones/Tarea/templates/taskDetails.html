@@ -4,6 +4,16 @@
 
 <h1>Task Details</h1>
 
-{{task.title}}
+<h2>{{task.title}}</h2>
+
+{{error}}
+
+<form method="POST">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button>
+        Update
+    </button>
+</form>
 
 {%endblock%}
