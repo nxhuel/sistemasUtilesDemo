@@ -1,25 +1,30 @@
-{% extends 'baseTasks.html' %} 
+{% extends 'baseTasks.html' %} {% block title %} Django CRUD {% endblock %}
+{%block content %}
 
-{% block title %} Django CRUD {% endblock %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h1 class=" text-center display-3 py-5">Tasks Pending</h1>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit...</p>
 
-{% block content %}
-<h1>Tasks</h1>
-<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit...</p>
-
-<ul>
-  {% for task in tasks %}
-  <li>
-    <a href="{% url 'taskDetails' task.id %}">
-      {% if task.important %}
-      <strong>{{task.title}}</strong>
-      {% else %}
-      <p>{{task.title}}</p>
-      {% endif %}
-      <p>{{task.description}}</p>
-      <p>{{task.user.username}}</p>
-    </a>
-  </li>
-  {% endfor %}
-</ul>
+      <ul class="list-group">
+        {% for task in tasks %}
+        <a class="list-group-item" href="{% url 'taskDetails' task.id %}">
+          <header class="d-flex justify-content-between">
+            {% if task.important %}
+            <h1 class=" fw-bold text-success">{{task.title}}</h1>
+            {% else %}
+            <h1 class=" fw-bold">{{task.title}}</h1>
+            {% endif %}
+            <p>{{task.user.username}}</p>
+          </header>
+          <p>{{task.description}}</p>
+          <p>{{task.dateCompleted|date:'M j Y:i'}}</p>
+        </a>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
 
 {% endblock %}

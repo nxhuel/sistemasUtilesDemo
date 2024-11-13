@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import TaskForm
 from .models import Task
+from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -8,7 +10,7 @@ from .models import Task
 def home(request):
     return render(request, 'home.html')
 
-
+@login_required
 def tasks(request):
     tasks = Task.objects.filter(
         user=request.user, dateCompleted__isnull=True)
@@ -16,7 +18,7 @@ def tasks(request):
         'tasks': tasks
     })
 
-
+@login_required
 def createTask(request):
     if request.method == 'GET':
         return render(request, 'createTask.html', {
@@ -35,7 +37,7 @@ def createTask(request):
                 'error': 'Por favor provee datos validos'
             })
 
-
+@login_required
 def taskDetails(request, task_id):
     if request.method == 'GET':
         task = get_object_or_404(Task, pk=task_id, user=request.user)
@@ -56,3 +58,26 @@ def taskDetails(request, task_id):
                 'form': form,
                 'error': 'Error al actualizar tarea'
             })
+
+@login_required
+def completeTask(request, task_id):
+    task = get_object_or_404(Task, pk=task_id, user=request.user)
+    if request.method == 'POST':
+        task.dateCompleted = timezone.now()
+        task.save()
+        return redirect('tasks')
+
+@login_required
+def deleteTask(request, task_id):
+    task =  get_object_or_404(Task, pk=task_id)
+    if request.method == 'POST':
+        task.delete()
+        return redirect('tasks')
+
+@login_required 
+def tasksCompleted(request):
+    tasks = Task.objects.filter(
+        user=request.user, dateCompleted__isnull=False).order_by('-dateCompleted')
+    return render(request, 'tasks.html', {
+        'tasks': tasks
+    })

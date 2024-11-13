@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.http import HttpResponse
 from django.db import IntegrityError
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -33,7 +34,7 @@ def singup(request):
             'error': 'Contraseñas no coinciden'
         })
 
-
+@login_required
 def signout(request):
     logout(request)
     return redirect('home')

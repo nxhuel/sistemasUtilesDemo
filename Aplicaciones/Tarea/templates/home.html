@@ -1,9 +1,53 @@
-{% extends 'baseTasks.html' %}
+{% extends 'baseTasks.html' %} {% block title %} Django Home {%endblock%}
+{%block content %}
 
-{% block title %} Django Home {% endblock %}
+<main class="container py-5">
+  <section class="card card-body">
+    <h1 class="card-title display-1 text-center">Django App</h1>
+    <p class="card-text">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita iste a
+      delectus quo inventore alias consequuntur quisquam velit repellat culpa
+      accusantium, omnis labore molestias! Omnis provident atque beatae. Quos,
+      aperiam? Fugit laudantium rerum molestias eos ut odio eius pariatur,
+      numquam aliquid sint fugiat cupiditate sed! Sed repudiandae quo distinctio
+      deleniti iure porro molestias ex iusto qui vel, temporibus quam et. Enim
+      nostrum suscipit eligendi voluptates, rerum sequi unde repudiandae,
+      doloremque sapiente in aspernatur adipisci at illum dicta quae provident
+      assumenda soluta delectus voluptate labore fugit quis nisi deleniti?
+      Magni, placeat. Sed, laboriosam. Consectetur ea sed eum illo voluptates
+      illum. Ab iure, laboriosam fugiat qui, voluptas labore, voluptatem
+      corrupti quis dolore numquam ad hic repudiandae delectus voluptatum et sit
+      deserunt minus. Temporibus dignissimos ullam cum dolorum laborum delectus
+      deserunt est quo magnam, nostrum placeat, similique rerum soluta quisquam
+      fuga quidem quia sunt corrupti sint dolore asperiores dolores aliquid
+      omnis! Accusantium, quasi? Eum distinctio ab obcaecati recusandae et! Vel
+      ipsum consequuntur quidem distinctio, aperiam praesentium natus, nobis
+      reiciendis similique a perferendis eaque iure illo quos suscipit officiis
+      incidunt possimus? Optio, at. Ut? Fuga molestias quos deserunt laudantium
+      fugiat explicabo aut labore consequuntur expedita, quam natus fugit
+      reprehenderit soluta, voluptates illum laboriosam, tenetur voluptatum
+      beatae magnam vel quasi voluptatem ea perferendis. Assumenda, consequatur.
+      Aut beatae itaque ipsum eaque accusantium, earum laborum omnis facilis
+      numquam nulla exercitationem reprehenderit fuga minus cupiditate
+      voluptatem aspernatur sequi alias, animi eveniet soluta. Quibusdam
+      accusamus voluptates aspernatur ducimus aliquid? Autem quos sit deleniti
+      ratione, sequi eius! Ipsam, sint! Sit soluta vel ratione accusamus, enim,
+      mollitia in ipsum sunt omnis voluptate ullam, voluptatibus doloribus
+      labore dolores harum natus officia vitae. Minima exercitationem, quis
+      debitis quibusdam quidem esse itaque, aliquam molestias perferendis hic
+      facere! Deserunt quas magni cupiditate. Reprehenderit vitae velit fugit
+      ratione perspiciatis amet praesentium veritatis aut, rerum, hic eum?
+    </p>
+    <div class="card-body text-center">
+      {% if user.is_authenticated %}
 
-{% block content %}
-<h1>Home</h1>
-<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit...</p>
+      {% else %}
+      <a href="/signin/" class="card-link btn btn-dark">SignIn</a>
+      <a href="/signup/" class="card-link btn btn-secondary">SignUp</a>
+      {% endif%}
+
+    </div>
+  </section>
+</main>
 
 {% endblock %}
