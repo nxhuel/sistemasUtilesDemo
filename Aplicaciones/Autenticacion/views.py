@@ -23,7 +23,7 @@ def singup(request):
                 )
                 user.save()
                 login(request, user)
-                return redirect('tasks')
+                return redirect('inicioUtiles')
             except IntegrityError:
                 return render(request, "signup.html", {
                     'form': UserCreationForm,
@@ -37,7 +37,7 @@ def singup(request):
 @login_required
 def signout(request):
     logout(request)
-    return redirect('home')
+    return redirect('intranet')
 
 
 def signin(request):
@@ -55,4 +55,4 @@ def signin(request):
             })
         else:
             login(request, user)
-            return redirect('tasks')
+            return redirect('inicioUtiles')

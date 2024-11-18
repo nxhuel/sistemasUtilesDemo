@@ -2,6 +2,8 @@ from django.shortcuts import render
 
 # Create your views here.
 
+def intranet(request):
+    return render(request, "intranet.html")
 
-def home(request):
-    return render(request, "accesoAlSistema.html")
+def aplicativos(request):
+    return render(request, "aplicativos.html")

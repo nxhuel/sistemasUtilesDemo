@@ -21,4 +21,6 @@ urlpatterns = [
     path('', include('Aplicaciones.AccesoAlSistema.urls')),
     path('', include('Aplicaciones.Autenticacion.urls')),
     path('', include('Aplicaciones.Tarea.urls')),
+    path('', include('Aplicaciones.Utiles.urls')),
+    path('', include('Aplicaciones.PanelAdmin.urls')),
 ]

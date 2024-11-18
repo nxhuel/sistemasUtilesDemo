@@ -1,0 +1,30 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.logoAgip-size {
+  width: 15%;
+  height: auto;
+}
+
+.logoBsAsCiudad-size {
+  width: 15%;
+  height: auto;
+}
+
+main {
+  flex: 1;
+}
+
+.footer {
+  background-color: #333;
+  color: #b3b3b3; 
+  font-size: 0.9rem;
+  text-align: right;
+  padding: 10px;
+}
